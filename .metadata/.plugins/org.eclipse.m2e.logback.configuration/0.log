@@ -28,3 +28,4 @@
 2021-01-19 18:27:03,003 [Worker-7: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
 2021-01-19 18:27:03,004 [Worker-7: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Christian Sidemo\Desktop\RealtimeSystems\exercise\src\main\resources
 2021-01-19 18:27:03,005 [Worker-7: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-01-19 18:27:03,005 [Worker-7: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Christian Sidemo\Desktop\RealtimeSystems\exercise\src\test\resources
