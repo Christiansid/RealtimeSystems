@@ -2,7 +2,6 @@
 public class Test {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		System.out.println(System.getProperty("java.runtime.version"));
 		Thread p1 = new Thread(()-> {
 			for(int p = 1; p<100; p++) {

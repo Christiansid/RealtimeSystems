@@ -2,6 +2,25 @@
 <libraryInfos>
     <libraryInfo home="C:\Users\Christian Sidemo\.p2\pool\plugins\org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_15.0.1.v20201027-0507\jre" version="15.0.1"/>
     <libraryInfo home="C:\Users\Christian Sidemo\.p2\pool\plugins\org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_15.0.1.v20201027-0507" version="15.0.1"/>
+    <libraryInfo home="C:\Program Files\Java\jre1.8.0_161" version="1.8.0_161">
+        <bootpath>
+            <entry path="C:\Program Files\Java\jre1.8.0_161\lib\resources.jar"/>
+            <entry path="C:\Program Files\Java\jre1.8.0_161\lib\rt.jar"/>
+            <entry path="C:\Program Files\Java\jre1.8.0_161\lib\sunrsasign.jar"/>
+            <entry path="C:\Program Files\Java\jre1.8.0_161\lib\jsse.jar"/>
+            <entry path="C:\Program Files\Java\jre1.8.0_161\lib\jce.jar"/>
+            <entry path="C:\Program Files\Java\jre1.8.0_161\lib\charsets.jar"/>
+            <entry path="C:\Program Files\Java\jre1.8.0_161\lib\jfr.jar"/>
+            <entry path="C:\Program Files\Java\jre1.8.0_161\classes"/>
+        </bootpath>
+        <extensionDirs>
+            <entry path="C:\Program Files\Java\jre1.8.0_161\lib\ext"/>
+            <entry path="C:\WINDOWS\Sun\Java\lib\ext"/>
+        </extensionDirs>
+        <endorsedDirs>
+            <entry path="C:\Program Files\Java\jre1.8.0_161\lib\endorsed"/>
+        </endorsedDirs>
+    </libraryInfo>
     <libraryInfo home="C:\Program Files\Java\jdk1.8.0_161" version="1.8.0_161">
         <bootpath>
             <entry path="C:\Program Files\Java\jdk1.8.0_161\jre\lib\resources.jar"/>
