@@ -25,14 +25,20 @@ public class Buttons extends Thread {
 
 	// run method
 	public void run() {
-        //TODO C2.E8: Create help-variables //
-        boolean prevOn = false;
+        final int period = 10;
+        final double delta = 10.0 / (60.0 * 1000.0) * period;
         
         try {
             while (!interrupted()) {
                 if(onInput.get())
-                //TODO C2.E8: Check button-status and take action accordingly, every 10 ms //
-                Thread.sleep(1);
+                    regul.turnOn();
+                else if(offInput.get())
+                    regul.turnOff();
+                else if(incInput.get())
+                    square.incAmp(delta);
+                else if(decInput.get())
+                    square.decAmp(delta);
+                Thread.sleep(period);
             }
         } catch (InterruptedException e) {
             e.printStackTrace();

@@ -2,7 +2,7 @@
 
 public class SquareWave extends Thread {
 	private Regul regul;
-	private int sign;
+	private int sign = 1;
 	
 	private AmplitudeMonitor ampMon;
 	
@@ -13,36 +13,47 @@ public class SquareWave extends Thread {
 		
 		// Synchronized access methods. The amplitude should always be non-negative.
 		public synchronized double getAmp() {
-            //TODO C2.E9: Write your code //
-            return 0.0;
+            return amp;
         }
 		public synchronized void setAmp(double amp) {
-            //TODO C2.E9: Write your code //
+            if(amp<0){
+                this.amp = 0;
+            }else{
+                this.amp = amp;
+            }
         }
 	}
 	
 	// Constructor
 	public SquareWave(Regul regul, int priority) {
-        //TODO C2.E9: Store variables and set priority //
+        this.regul = regul;
+        this.setPriority(priority);
+        this.sign = 1;
     }
 	
 	// Public methods to decrease and increase the amplitude by delta. Called from Buttons
 	// Should be synchronized on ampMon. Should also call the setRef method in Regul
 	public void incAmp(double delta) {
-        //TODO C2.E9: Write code that is synchronized on ampMon //
+        synchronized(ampMon){
+            ampMon.setAmp(ampMon.getAmp()+delta);
+        }
+        regul.setRef(sign*ampMon.getAmp());
     }
 	public void decAmp(double delta) {
-        //TODO C2.E9: Write code that is synchronized on ampMon //
+        this.incAmp(-delta);
     }
 	
 	// run method
 	public void run() {
-        //TODO C2.E9: Create help-variables //
+        final int period = 10000;
 
         try {
             while (!interrupted()) {
-                //TODO C2.E9: Write periodic code here //
-                Thread.sleep(1);
+                sign = -sign;
+                regul.setRef(sign*ampMon.getAmp());
+                Thread.sleep(period);
+
+                Thread.sleep(period);
             }
         } catch (InterruptedException e) {
             e.printStackTrace();

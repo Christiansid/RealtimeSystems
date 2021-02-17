@@ -1,0 +1,19 @@
+INDEX VERSION 1.131+C:\Users\chris\OneDrive\Skrivbord\RealtimeSystems\lab1_material\.metadata\.plugins\org.eclipse.jdt.core
+1912132244.index
+790774071.index
+1113295282.index
+3751777148.index
+2030096823.index
+1667982899.index
+2012138608.index
+2768476762.index
+3397179837.index
+2974085718.index
+537483563.index
+653371753.index
+3686551590.index
+4125300305.index
+3636794724.index
+2801182670.index
+2266971908.index
+124452907.index

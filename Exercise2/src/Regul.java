@@ -21,34 +21,42 @@ public class Regul extends Thread {
 	// Here the internal monitor objects should be created and
 	// the inputs and outputs should be initialized.
 	public Regul(int priority, Box b, FirstOrderProcess proc) {
+		this.onButtonLamp = b.getOnButtonLamp();
+		this.offButtonLamp = b.getOffButtonLamp();
+		this.setPriority(priority);
+		this.yIn = proc.getSource(0);
+		this.uOut = proc.getSink(0);
+		this.rOut = proc.getSink(1);
+		this.paramMon = new ParameterMonitor();
+		this.refMon = new ReferenceMonitor();
+		this.onMon = new OnMonitor();
         //TODO C2.E11: Initialize the sources and sinks //
         //TODO C2.E11: Set the buttons and thread priority //
     }
 	
 	// Public method to set K. Should not be synchronized.
 	public void setK(double K) {
-        //TODO C2.E11: Write your code here //
+        paramMon.setK(K);
     }
 	
 	// Public method to set the reference. Should not be synchronized.
 	public void setRef(double ref) {
-        //TODO C2.E11: Write your code here //
+        refMon.setRef(ref);
     }
 	
 	// Method to check if the controller  is on. Should be private
 	// since it is only called from Regul itself.
 	private boolean isOn() {
-        //TODO C2.E11: Write your code here //
-        return true;
+        return onMon.isOn();
     }
 	
 	// Public methods to turn off and on the controller
 	// Should not be synchronized. Should update the button lamps
 	public void turnOff() {
-        //TODO C2.E11: Write your code here //
+        onMon.setOn(false);
     }
 	public void turnOn() {
-        //TODO C2.E11: Write your code here //
+        onMon.setOn(true);
     }
 	
 	// Class definition for internal ParameterMonitor
@@ -57,11 +65,13 @@ public class Regul extends Thread {
 		
 		// Synchronized access methods. K should always be non-negative.
 		public synchronized double getK() {
-            //TODO C2.E11: Write your code here //
-            return 0.0;
+            return K;
         }
 		public synchronized void setK(double K) {
-            //TODO C2.E11: Write your code here //
+			if(K<0)
+				System.out.println("K ignored " + K);
+			else
+				this.K = K;
         }
 	}
 	
@@ -71,11 +81,10 @@ public class Regul extends Thread {
 		
 		// Synchronized access methods
 		public synchronized double getRef() {
-            //TODO C2.E11: Write your code here //
-            return 0.0;
+            return ref;
         }
 		public synchronized void setRef(double ref) {
-            //TODO C2.E11: Write your code here //
+            this.ref = ref;
         }
 	}
 	
@@ -85,22 +94,30 @@ public class Regul extends Thread {
 		
 		// Synchronized access methods
 		public synchronized boolean isOn() {
-            //TODO C2.E11: Write your code here //
-            return true;
+            return on;
         }
 		public synchronized void setOn(boolean on) {
-            //TODO C2.E11: Write your code here //
+            this.on = on;
         }
 	}
 	
 	// Run method
 	public void run() {
-        //TODO C2.E11: Define help variables //
+        final int period = 100;
+		double k; 
+		double ref;
+		double currSignal;
 
         try {
             while (!interrupted()) {
-               //TODO C2.E11: Write your code here // 
-               Thread.sleep(1);
+			   //TODO C2.E11: Write your code here // 
+			   currSignal = yIn.get();
+			   ref = refMon.getRef();
+			   k = paramMon.getK();
+			   double signal = k * (ref - currSignal);
+			   uOut.set(signal);
+			   rOut.set(ref);
+               Thread.sleep(period);
             }
         } catch (InterruptedException e) {
             e.printStackTrace();

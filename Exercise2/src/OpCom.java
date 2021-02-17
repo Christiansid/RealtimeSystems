@@ -9,7 +9,8 @@ public class OpCom extends Thread {
 	
 	// Constructor
 	public OpCom(Regul regul, int priority) {
-        //TODO C2.E10: Store variables and set priority //
+        this.regul = regul;
+        this.setPriority(priority);
     }
 	
 	// run method
